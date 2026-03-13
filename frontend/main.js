@@ -1,5 +1,5 @@
 // ==================== CONFIGURATION ====================
-const API_BASE = '/.netlify/functions';
+const API_BASE = '/api';
 
 // ==================== STATE ====================
 let currentUser = null;
