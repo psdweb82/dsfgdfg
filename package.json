@@ -1,0 +1,14 @@
+{
+  "name": "sukunaw-gaming",
+  "version": "1.0.0",
+  "description": "sukunaW Gaming Platform",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build needed'"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  }
+}

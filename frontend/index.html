@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⛧ sukunaW - Игровая платформа</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Chest Modal -->
+  <div class="modal-overlay" id="chestModal">
+    <div class="modal-content">
+      <div class="chest-opening" id="chestOpening">📦</div>
+      <div class="chest-result" id="chestResult">
+        <h2 class="font-orbitron mb-16">НАГРАДА!</h2>
+        <div class="reward-amount" id="rewardAmount">+0</div>
+        <p class="text-muted mb-24">монет добавлено</p>
+        <button class="btn-primary" onclick="closeChestModal()">ЗАБРАТЬ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Container -->
+  <div id="app"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>

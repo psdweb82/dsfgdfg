@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "username": "pseudotamine",
+      "passwordHash": "$2a$10$Qa8954Wjf8I2b1dE3Egsy.jaEtOtqGJHEaYtk1C7PIdiYGW/uKUrm",
+      "coins": 0,
+      "level": 1,
+      "xp": 0,
+      "roles": [
+        "Админ"
+      ],
+      "roleGradients": [],
+      "clan": null,
+      "clanCategory": false,
+      "purchaseHistory": [],
+      "isAdmin": true,
+      "isBanned": false,
+      "lastGameTime": null,
+      "lastDailyBonus": null,
+      "lastWeeklyBonus": null,
+      "chests": [],
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ]
+}
