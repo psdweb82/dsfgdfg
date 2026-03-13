@@ -1,14 +1,13 @@
 {
   "name": "sukunaw-gaming",
   "version": "1.0.0",
-  "description": "sukunaW Gaming Platform",
-  "main": "frontend/main.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "netlify dev",
-    "build": "echo 'No build needed'",
-    "start": "node frontend/main.js"
+    "start": "node server.js",
+    "build": "echo 'No build needed'"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
     "uuid": "^9.0.1"
