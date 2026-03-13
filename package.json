@@ -2,11 +2,11 @@
   "name": "sukunaw-gaming",
   "version": "1.0.0",
   "description": "sukunaW Gaming Platform",
-  "main": "src/index.js",
+  "main": "main.js",
   "scripts": {
     "dev": "netlify dev",
     "build": "echo 'No build needed'",
-    "start": "node src/index.js"
+    "start": "node main.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
