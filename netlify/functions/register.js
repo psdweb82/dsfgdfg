@@ -1,3 +1,4 @@
+// netlify/functions/register.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
@@ -5,25 +6,30 @@ const fs = require('fs');
 const path = require('path');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'sukunaW_secret_key_2026';
-const DB_PATH = path.join(__dirname, '../../database/users.json');
+// Путь к users.json относительно текущей функции
+const DB_PATH = path.join(__dirname, '..', '..', 'database', 'users.json');
 
-// Helper to read database
+// Helper для чтения базы
 const readDB = () => {
   try {
     const data = fs.readFileSync(DB_PATH, 'utf8');
     return JSON.parse(data);
   } catch (error) {
+    console.error('Ошибка чтения базы:', error);
     return { users: [] };
   }
 };
 
-// Helper to write database
+// Helper для записи в базу
 const writeDB = (data) => {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  try {
+    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Ошибка записи базы:', error);
+  }
 };
 
 exports.handler = async (event) => {
-  // CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
@@ -36,15 +42,21 @@ exports.handler = async (event) => {
   }
 
   if (event.httpMethod !== 'POST') {
-    return { 
-      statusCode: 405, 
-      headers, 
-      body: JSON.stringify({ error: 'Метод не разрешён' }) 
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: 'Метод не разрешён' })
     };
   }
 
   try {
-    const { username, password } = JSON.parse(event.body);
+    // Если event.body уже объект (Express), оставляем как есть
+    let bodyData = event.body;
+    if (typeof bodyData === 'string') {
+      bodyData = JSON.parse(bodyData);
+    }
+
+    const { username, password } = bodyData;
 
     if (!username || !password) {
       return {
@@ -72,7 +84,7 @@ exports.handler = async (event) => {
 
     const db = readDB();
 
-    // Check if username exists
+    // Проверка на существующего пользователя
     if (db.users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
       return {
         statusCode: 400,
@@ -123,6 +135,7 @@ exports.handler = async (event) => {
     };
 
   } catch (error) {
+    console.error('Ошибка register.js:', error);
     return {
       statusCode: 500,
       headers,
